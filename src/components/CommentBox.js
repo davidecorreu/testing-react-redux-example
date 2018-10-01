@@ -22,7 +22,6 @@ class CommentBox extends Component {
   }
 
   render() {
-    console.log('CommentBox this.props:', this.props);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
