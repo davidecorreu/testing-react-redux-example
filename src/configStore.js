@@ -8,5 +8,6 @@ export default (initialState = {}) => {
     reducers,
     initialState,
     applyMiddleware(reduxPromise)
+    // applyMiddleware()
   );
 };
