@@ -26,7 +26,7 @@ class App extends Component {
   renderHeader() {
     return (
       <ul>
-        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/' className="home-link" >Home</Link></li>
         <li><Link to='post' className="post-comment-link" >Post A Comment</Link></li>
         <li>{this.renderButton()}</li>
       </ul>
