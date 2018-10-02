@@ -15,7 +15,9 @@ class App extends Component {
         </button>);
     } else {
       return (
-        <button onClick={() => changeAuth(true)}>
+        <button
+          className="sign-in-button"
+          onClick={() => changeAuth(true)}>
           Sign In
         </button>);
     }
@@ -25,7 +27,7 @@ class App extends Component {
     return (
       <ul>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='post'>Post A Comment</Link></li>
+        <li><Link to='post' className="post-comment-link" >Post A Comment</Link></li>
         <li>{this.renderButton()}</li>
       </ul>
     );

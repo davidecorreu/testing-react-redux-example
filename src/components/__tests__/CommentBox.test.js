@@ -8,7 +8,7 @@ let wrapped;
 
 beforeEach(() => {
   wrapped = mount(
-    <Root>
+    <Root initialState={{auth: true}}>
       <CommentBox />
     </Root>
   );

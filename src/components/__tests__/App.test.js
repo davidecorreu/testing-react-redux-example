@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { mount } from 'enzyme';
 import App from 'components/App';
 import Root from 'Root';
 import CommentBox from 'components/CommentBox';
@@ -12,7 +13,9 @@ it('rendrers without crashing', () => {
 
   ReactDOM.render(
     <Root>
-      <App />
+      <BrowserRouter>
+        <Route path='/' component={App} />
+      </BrowserRouter>
     </Root>
     , div);
   // clean the memory used in this test
@@ -23,10 +26,24 @@ it('rendrers without crashing', () => {
 let wrapped;
 
 beforeEach(() => {
-  wrapped = shallow(<App />);
+  wrapped = mount(
+    <Root>
+      <BrowserRouter>
+        <Route path='/' component={App} />
+      </BrowserRouter>
+    </Root>
+  );
 });
 
+afterEach(() => {
+  wrapped.unmount();
+})
+
 it('shows a comment box', () => {
+  wrapped.find('.sign-in-button').simulate('click');
+  wrapped.update();
+  wrapped.find('Link .post-comment-link').simulate('click', {button: 0});
+  wrapped.update();
   expect(wrapped.find(CommentBox).length).toEqual(1);
 });
 
